@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<UsersEntity, String> {
     Optional<UsersEntity> findByIdUser(String idUser);
+    boolean existsByCellPhone(String s);
 }

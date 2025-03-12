@@ -3,7 +3,9 @@ package com.sinsync.proyectoIE.security;
 import com.sinsync.proyectoIE.Authentication.AuthenticationRequest;
 import com.sinsync.proyectoIE.Authentication.AuthenticationResponse;
 import com.sinsync.proyectoIE.Authentication.AuthenticationService;
+import com.sinsync.proyectoIE.Users.UsersDto;
 import com.sinsync.proyectoIE.Users.UsersEntity;
+import com.sinsync.proyectoIE.Users.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.Map;
 public class PruebasToken {
     private final JwtService jwtService;
     private final AuthenticationService auth;
+    private final UsersService usersService;
 
     @GetMapping
     public ResponseEntity<String> getToken(){
@@ -44,5 +47,10 @@ public class PruebasToken {
     @PostMapping("/login")
     public AuthenticationResponse login(@RequestBody AuthenticationRequest request){
         return auth.login(request);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody UsersDto usersDto){
+        return usersService.registerUser(usersDto);
     }
 }
