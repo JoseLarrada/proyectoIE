@@ -31,7 +31,11 @@ public class HttpSecurityConfig {
             "/swagger-ui/**",
             "/webjars/**",
             "/swagger-ui.html",
-            "/token/**"
+            "/token/**",
+            "/simple/**",
+            "/compuesto/**",
+            "/anualidades/**",
+            "/gradientes"
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
