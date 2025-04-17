@@ -25,10 +25,10 @@ public class InteresSimple extends Intereses {
     }
 
     protected double calcularTasaDeInteres(){
-        return ((getValorFinal()/getValorPresente()) - 1 / getTiempo());
+        return ((getValorFinal() / getValorPresente()) - 1) / getTiempo();
     }
 
     protected double calcularTiempo(){
-        return ((getValorFinal()/getValorPresente()) - 1 / getTasaInteres());
+        return ((getValorFinal() / getValorPresente()) - 1) / getTiempo();
     }
 }
