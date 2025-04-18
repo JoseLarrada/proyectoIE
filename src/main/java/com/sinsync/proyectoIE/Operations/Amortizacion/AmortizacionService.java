@@ -7,20 +7,8 @@ import java.util.List;
 
 @Service
 public class AmortizacionService {
-    public AmortizacionResponseDTO calcular(AmortizacionRequestDTO request) {
-        switch (request.metodo().toLowerCase()) {
-            case "frances":
-                return calcularFrances(request);
-            case "aleman":
-                return calcularAleman(request);
-            case "americano":
-                return calcularAmericano(request);
-            default:
-                throw new IllegalArgumentException("Método de amortización no válido");
-        }
-    }
 
-    private AmortizacionResponseDTO calcularFrances(AmortizacionRequestDTO req) {
+    public AmortizacionResponseDTO calcularFrances(AmortizacionRequestDTO req) {
         double P = req.monto();
         double r = req.tasa();
         int n = req.periodos();
@@ -38,7 +26,7 @@ public class AmortizacionService {
         return new AmortizacionResponseDTO("frances", tabla);
     }
 
-    private AmortizacionResponseDTO calcularAleman(AmortizacionRequestDTO req) {
+    public AmortizacionResponseDTO calcularAleman(AmortizacionRequestDTO req) {
         double P = req.monto();
         double r = req.tasa();
         int n = req.periodos();
@@ -56,7 +44,7 @@ public class AmortizacionService {
         return new AmortizacionResponseDTO("aleman", tabla);
     }
 
-    private AmortizacionResponseDTO calcularAmericano(AmortizacionRequestDTO req) {
+    public AmortizacionResponseDTO calcularAmericano(AmortizacionRequestDTO req) {
         double P = req.monto();
         double r = req.tasa();
         int n = req.periodos();
