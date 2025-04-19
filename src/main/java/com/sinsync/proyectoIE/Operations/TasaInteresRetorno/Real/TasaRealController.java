@@ -1,4 +1,4 @@
-package com.sinsync.proyectoIE.Operations.SistemasCapitalizacion.Individual;
+package com.sinsync.proyectoIE.Operations.TasaInteresRetorno.Real;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/individual")
-public class IndividualController {
-    private IndividualService individualService;
+@RequestMapping("/tirreal")
+public class TasaRealController {
+    private final TasaRealService tasaRealService;
 
     @PostMapping
-    public ResponseEntity<Double> calcularIndividual(@RequestBody IndividualRequestDTO request){
+    public ResponseEntity<Double> calcularReal(@RequestBody RealRequestDTO request){
         try{
-            return ResponseEntity.ok(individualService.calcularIndividual(request));
+            return ResponseEntity.ok(tasaRealService.calcularTasaReal(request));
         }catch (Exception e){
             return ResponseEntity.noContent().build();
         }

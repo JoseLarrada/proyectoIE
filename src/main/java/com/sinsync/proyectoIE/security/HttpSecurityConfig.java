@@ -35,7 +35,20 @@ public class HttpSecurityConfig {
             "/simple/**",
             "/compuesto/**",
             "/anualidades/**",
-            "/gradientes"
+            "/gradientes",
+            "/amortización/**",
+            "/bonos/**",
+            "/evaluacion/**",
+            "/inflacion/**",
+            "/colectiva/**",
+            "/individual/**",
+            "/mixto/**",
+            "/seguros/**",
+            "/tircontable/**",
+            "/tirmodificada/**",
+            "/tirreal/**",
+            "/tirsimple/**",
+            "/uvr/**"
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{

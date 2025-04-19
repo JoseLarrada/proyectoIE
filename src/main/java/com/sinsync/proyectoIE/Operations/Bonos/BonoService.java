@@ -1,5 +1,8 @@
 package com.sinsync.proyectoIE.Operations.Bonos;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BonoService {
     public BonoResponseDTO evaluar(BonoRequestDTO req) {
         int periodos = req.años() * req.frecuencia().getPeriodosPorAnio();

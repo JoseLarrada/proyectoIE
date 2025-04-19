@@ -1,4 +1,4 @@
-package com.sinsync.proyectoIE.Operations.SistemasCapitalizacion.Individual;
+package com.sinsync.proyectoIE.Operations.SistemasCapitalizacion.Mixto;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/individual")
-public class IndividualController {
-    private IndividualService individualService;
+@RequestMapping("/mixto")
+public class MixtoController {
+    private final MixtoService mixtoService;
 
     @PostMapping
-    public ResponseEntity<Double> calcularIndividual(@RequestBody IndividualRequestDTO request){
+    public ResponseEntity<Double> calcularAmortizacionMixta(@RequestBody MixtaRequestDTO request){
         try{
-            return ResponseEntity.ok(individualService.calcularIndividual(request));
+            return ResponseEntity.ok(mixtoService.calcularMixto(request));
         }catch (Exception e){
             return ResponseEntity.noContent().build();
         }

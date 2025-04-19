@@ -1,4 +1,4 @@
-package com.sinsync.proyectoIE.Operations.SistemasCapitalizacion.Individual;
+package com.sinsync.proyectoIE.Operations.TasaInteresRetorno.Modificada;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/individual")
-public class IndividualController {
-    private IndividualService individualService;
+@RequestMapping("/tirmodificada")
+public class TirmController {
+    private final TirmService tirmService;
 
     @PostMapping
-    public ResponseEntity<Double> calcularIndividual(@RequestBody IndividualRequestDTO request){
+    public ResponseEntity<TirmResponseDTO> calcularModificada(@RequestBody TirmRequestDTO request){
         try{
-            return ResponseEntity.ok(individualService.calcularIndividual(request));
+            return ResponseEntity.ok(tirmService.calcularTirm(request));
         }catch (Exception e){
             return ResponseEntity.noContent().build();
         }
