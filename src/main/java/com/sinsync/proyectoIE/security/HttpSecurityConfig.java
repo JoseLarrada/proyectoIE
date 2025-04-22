@@ -50,7 +50,8 @@ public class HttpSecurityConfig {
             "/tirsimple/**",
             "/uvr/**",
             "/cuentas/**",
-            "/movimientos/**"
+            "/movimientos/**",
+            "/pagos/**"
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
