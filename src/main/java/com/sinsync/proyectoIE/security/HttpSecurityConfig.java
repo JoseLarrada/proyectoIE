@@ -48,7 +48,9 @@ public class HttpSecurityConfig {
             "/tirmodificada/**",
             "/tirreal/**",
             "/tirsimple/**",
-            "/uvr/**"
+            "/uvr/**",
+            "/cuentas/**",
+            "/movimientos/**"
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{

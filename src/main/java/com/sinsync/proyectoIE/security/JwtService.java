@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,5 +83,14 @@ public class JwtService {
     private <T> T extractClaim(String token, Function<Claims,T> claimsResolver) {
         final Claims claims = getBody(token);
         return claimsResolver.apply(claims);
+    }
+    public String extraerTokenDesdeHeader(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7); // quita "Bearer "
+        } else {
+            throw new RuntimeException("Token JWT no encontrado o formato inválido");
+        }
     }
 }
