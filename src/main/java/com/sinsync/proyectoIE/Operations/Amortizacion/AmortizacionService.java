@@ -23,7 +23,7 @@ public class AmortizacionService {
             tabla.add(new CuotaDTO(t, cuota, interes, amortizacion, Math.max(saldo, 0)));
         }
 
-        return new AmortizacionResponseDTO("frances", tabla);
+        return new AmortizacionResponseDTO(tabla);
     }
 
     public AmortizacionResponseDTO calcularAleman(AmortizacionRequestDTO req) {
@@ -41,7 +41,7 @@ public class AmortizacionService {
             tabla.add(new CuotaDTO(t, cuota, interes, amortizacion, Math.max(saldo, 0)));
         }
 
-        return new AmortizacionResponseDTO("aleman", tabla);
+        return new AmortizacionResponseDTO(tabla);
     }
 
     public AmortizacionResponseDTO calcularAmericano(AmortizacionRequestDTO req) {
@@ -59,6 +59,6 @@ public class AmortizacionService {
             tabla.add(new CuotaDTO(t, cuota, interes, amortizacion, saldo));
         }
 
-        return new AmortizacionResponseDTO("americano", tabla);
+        return new AmortizacionResponseDTO(tabla);
     }
 }

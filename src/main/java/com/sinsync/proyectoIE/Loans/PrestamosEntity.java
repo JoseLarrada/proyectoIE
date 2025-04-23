@@ -27,6 +27,8 @@ public class PrestamosEntity {
     private Double cuotas;
     @Column(name = "valor_cuota")
     private Double valorCuotas;
+    @Column(name = "valor_total_pagar")
+    private Double valorTotalPagar;
     @Column(name = "tipo_interes")
     private int tipoInteres;
     private Double intereses;
