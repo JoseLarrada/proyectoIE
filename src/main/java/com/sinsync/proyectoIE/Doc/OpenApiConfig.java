@@ -17,19 +17,23 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         email = "sincsync@outlook.com",
                         url = "https://localhost:8080/home"
                 ),
-                description = "Documentacion de la apí de proyecto de sinsync de gestion de pagos bancarios",
+                description = "Documentación de la API de SinSync de gestión de pagos bancarios",
                 title = "OpenApi specification - SinSync",
                 version = "1.0",
                 license = @License(
                         name = "Licence name",
                         url = "https://some-url.com"
                 ),
-                termsOfService = "Terminos y servicios"
+                termsOfService = "Términos y servicios"
         ),
         servers = {
                 @Server(
                         description = "Local ENV",
                         url = "http://localhost:8080"
+                ),
+                @Server(
+                        description = "Render Production",
+                        url = "https://proyectoie.onrender.com"
                 )
         },
         security = {
@@ -48,3 +52,4 @@ import io.swagger.v3.oas.annotations.servers.Server;
 )
 public class OpenApiConfig {
 }
+
