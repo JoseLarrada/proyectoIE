@@ -3,6 +3,7 @@ package com.sinsync.proyectoIE.security;
 import com.sinsync.proyectoIE.Authentication.AuthenticationRequest;
 import com.sinsync.proyectoIE.Authentication.AuthenticationResponse;
 import com.sinsync.proyectoIE.Authentication.AuthenticationService;
+import com.sinsync.proyectoIE.Users.ResponseDTOUser;
 import com.sinsync.proyectoIE.Users.UsersDto;
 import com.sinsync.proyectoIE.Users.UsersEntity;
 import com.sinsync.proyectoIE.Users.UsersService;
@@ -50,7 +51,7 @@ public class PruebasToken {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UsersDto usersDto){
+    public ResponseEntity<ResponseDTOUser> register(@RequestBody UsersDto usersDto){
         return usersService.registerUser(usersDto);
     }
 }

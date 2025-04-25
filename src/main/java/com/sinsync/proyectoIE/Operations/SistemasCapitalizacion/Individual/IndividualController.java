@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/individual")
 public class IndividualController {
-    private IndividualService individualService;
+    private final IndividualService individualService;
 
     @PostMapping
     public ResponseEntity<Double> calcularIndividual(@RequestBody IndividualRequestDTO request){

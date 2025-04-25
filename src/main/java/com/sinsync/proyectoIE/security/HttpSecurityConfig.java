@@ -35,7 +35,7 @@ public class HttpSecurityConfig {
             "/simple/**",
             "/compuesto/**",
             "/anualidades/**",
-            "/gradientes",
+            "/gradientes/**",
             "/amortización/**",
             "/bonos/**",
             "/evaluacion/**",

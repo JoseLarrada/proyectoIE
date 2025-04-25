@@ -16,10 +16,10 @@ public class UsersService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
-    public ResponseEntity<String> registerUser(UsersDto user){
+    public ResponseEntity<ResponseDTOUser> registerUser(UsersDto user){
         try {
-            if (usersRepository.existsById(user.identification())) return ResponseEntity.badRequest().body("Ya existe una cuenta a su nombre, Inicie sesion");;
-            if (usersRepository.existsByCellPhone(user.cellPhone())) return ResponseEntity.badRequest().body("Numero asociado a una cuenta, Ingrese otro numero");
+            if (usersRepository.existsById(user.identification())) return ResponseEntity.badRequest().body(new ResponseDTOUser("Ya existe una cuenta a su nombre, Inicie sesion"));;
+            if (usersRepository.existsByCellPhone(user.cellPhone())) return ResponseEntity.badRequest().body(new ResponseDTOUser("Numero asociado a una cuenta, Ingrese otro numero"));
 
             UsersEntity userDb = UsersEntity.builder()
                     .idUser(user.identification())
@@ -30,9 +30,9 @@ public class UsersService {
                     .build();
 
             usersRepository.save(userDb);
-            return ResponseEntity.ok("Registrado Correctamente");
+            return ResponseEntity.ok(new ResponseDTOUser("Registrado Correctamente"));
         }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(new ResponseDTOUser(e.getMessage()));
         }
     }
 

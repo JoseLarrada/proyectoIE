@@ -119,8 +119,8 @@ public class PrestamosService {
 
     private ResultadoCalculo calcularGradienteAritmetico(CrearPrestamoDTO dto) {
         var request = new GradienteRequest(dto.montoPrestamo(), 0.0, dto.tasa(), dto.cuotas());
-        double total = gradienteAService.calcularValorFuturo(request);
-        return new ResultadoCalculo(total - dto.montoPrestamo(), total / dto.cuotas(), total);
+        var total = gradienteAService.calcularValorFuturo(request);
+        return new ResultadoCalculo(total.valorFinal() - dto.montoPrestamo(), total.valorFinal() / dto.cuotas(), total.valorFinal());
     }
 
     private ResultadoCalculo calcularGradienteGeometrico(CrearPrestamoDTO dto) {
