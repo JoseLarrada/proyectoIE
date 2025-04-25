@@ -1,15 +1,28 @@
-FROM openjdk:21-jdk-slim
+# Etapa 1: Construcción
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
-# Establecemos el directorio de trabajo dentro del contenedor
+# Establecemos el directorio de trabajo
 WORKDIR /app
 
-COPY . .
+# Copiamos todo el proyecto
+COPY pom.xml .
+COPY src ./src
 
-# Copiamos el JAR generado al contenedor
-COPY target/proyectoIE-0.0.1-SNAPSHOT.jar app.jar
+# Descargamos las dependencias y construimos el JAR
+RUN mvn clean package -DskipTests
 
-# Exponemos el puerto en el que corre Spring Boot (por defecto es 8080)
+# Etapa 2: Imagen final
+FROM openjdk:21-jdk-slim
+
+# Establecemos el directorio de trabajo
+WORKDIR /app
+
+# Copiamos el JAR construido en la etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Exponemos el puerto de la app (Spring Boot normalmente usa el 8080)
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación cuando el contenedor inicie
+# Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
